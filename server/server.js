@@ -15,9 +15,9 @@ mongoose
 
 app.get("/", (req, res) => res.send("API is running"));
 
-const productRoutes = require("./routes/productRoutes");
+const productRoutes = require("./routes/productRoutes.js");
 app.use("/api/products", productRoutes);
 
-app.listen(5000, () => {
-  console.log("Server started on port 5000");
+app.listen(5050, () => {
+  console.log("Server started on port 5050");
 });
