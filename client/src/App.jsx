@@ -1,9 +1,24 @@
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
+import Cart from "./pages/Cart";
+
 function App() {
   return (
-    <div>
-      <h1>Welcome to Your ML-Powered Shop 🛍️</h1>
-      <p>This is the beginning of your project!</p>
-    </div>
+    <Router>
+      <nav style={{ padding: "10px", backgroundColor: "#f0f0f0" }}>
+        <Link to="/" style={{ margin: "0 10px" }}>Home</Link>
+        <Link to="/shop" style={{ margin: "0 10px" }}>Shop</Link>
+        <Link to="/cart" style={{ margin: "0 10px" }}>Cart</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </Router>
   );
 }
+
 export default App;
