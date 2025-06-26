@@ -13,7 +13,7 @@ export default function Cart({ cart }) {
         <div>
           <ul style={{ listStyle: "none", padding: 0 }}>
             {cart.map(item => (
-              <li key={item._id} style={{ marginBottom: "1rem" }}>
+              <li key={item._id} className="cart-item">
                 <strong>{item.name}</strong><br />
                 ${item.price} × {item.quantity} = <strong>${item.price * item.quantity}</strong>
               </li>
