@@ -4,6 +4,7 @@ import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import './App.css'; 
 import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -21,6 +22,9 @@ function App() {
       }
     });
   };
+  useEffect(() => {
+    console.log("🛒 Cart updated:", cart);
+  }, [cart]);
   return (
     <Router>
       <nav style={{ padding: "10px", backgroundColor: "#f0f0f0" }}>
