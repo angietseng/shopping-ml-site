@@ -3,8 +3,10 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import './App.css'; 
+import { useState } from "react";
 
 function App() {
+  const [cart, setCart] = useState([]);
   return (
     <Router>
       <nav style={{ padding: "10px", backgroundColor: "#f0f0f0" }}>
