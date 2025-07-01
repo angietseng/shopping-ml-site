@@ -22,6 +22,18 @@ function App() {
       }
     });
   };
+  const handleUpdateQuantity = (productId, delta) => {
+    setCart(prevCart =>
+      prevCart.map(item =>
+        item._id === productId
+          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
+          : item
+      )
+    );
+  };
+  const handleRemoveFromCart = (productId) => {
+    setCart(prevCart => prevCart.filter(item => item._id !== productId));
+  };
   useEffect(() => {
     console.log("🛒 Cart updated:", cart);
   }, [cart]);
