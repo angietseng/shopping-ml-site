@@ -11,28 +11,23 @@ export default function Cart({ cart, onUpdateQuantity, onRemoveItem }) {
         <p>Your cart is empty 🛍️</p>
       ) : (
         <div>
-          <ul style={{ listStyle: "none", padding: 0 }}>
+          <ul className="cart-list">
             {cart.map(item => (
-              <li key={item._id} className="cart-item" style={{ marginBottom: "1.5rem" }}>
-                <strong>{item.name}</strong><br />
-                ${item.price} × {item.quantity} = <strong>${item.price * item.quantity}</strong><br />
+              <li key={item._id} className="cart-item">
+                <div className="cart-left">
+                  <strong>{item.name}</strong>
+                  <div>${item.price} × {item.quantity} = ${item.price * item.quantity}</div>
+                </div>
 
-                {/* Buttons */}
-                <button onClick={() => onUpdateQuantity(item._id, -1)} disabled={item.quantity <= 1}>
-                  –
-                </button>
-                <span style={{ margin: "0 0.5rem" }}>{item.quantity}</span>
-                <button onClick={() => onUpdateQuantity(item._id, 1)}>+</button>
-                <button
-                  onClick={() => onRemoveItem(item._id)}
-                  style={{ marginLeft: "1rem", color: "red", background: "none", border: "none", cursor: "pointer" }}
-                >
-                  Remove
-                </button>
+                <div className="cart-right">
+                  <button onClick={() => onUpdateQuantity(item._id, -1)} disabled={item.quantity <= 1}>–</button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => onUpdateQuantity(item._id, 1)}>+</button>
+                  <button onClick={() => onRemoveItem(item._id)} className="remove-btn">Remove</button>
+                </div>
               </li>
             ))}
           </ul>
-
           <hr />
           <h3>Total: ${total.toFixed(2)}</h3>
         </div>
