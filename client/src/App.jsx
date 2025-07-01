@@ -42,7 +42,9 @@ function App() {
       <nav style={{ padding: "10px", backgroundColor: "#f0f0f0" }}>
         <Link to="/" style={{ margin: "0 10px" }}>Home</Link>
         <Link to="/shop" style={{ margin: "0 10px" }}>Shop</Link>
-        <Link to="/cart" style={{ margin: "0 10px" }}>Cart</Link>
+        <Link to="/cart" style={{ margin: "0 10px" }}>
+          Cart ({cart.reduce((sum, item) => sum + item.quantity, 0)})
+        </Link>
       </nav>
 
       <Routes>
