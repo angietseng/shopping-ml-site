@@ -76,3 +76,12 @@
 .cart-item strong {
   font-weight: 600;
 }
+
+.item-name {
+  font-weight: 600;
+}
+
+.item-controls button {
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+}
