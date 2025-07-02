@@ -37,10 +37,17 @@ function App() {
     setCart(prevCart => prevCart.filter(item => item._id !== productId));
   };
   const [user, setUser] = useState(null);
-  
+
   useEffect(() => {
     console.log("🛒 Cart updated:", cart);
   }, [cart]);
+
+  useEffect(() => {
+  const savedUser = localStorage.getItem("user");
+  if (savedUser) {
+    setUser(JSON.parse(savedUser)); // parse string to object
+  }
+  }, []);
 
   return (
     <Router>
