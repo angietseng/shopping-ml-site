@@ -9,7 +9,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   const handleAddToCart = (product) => {
     setCart(prevCart => {
       const existing = prevCart.find(item => item._id === product._id);
