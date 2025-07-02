@@ -1,0 +1,41 @@
+import { useState } from "react";
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      alert("Please fill in all fields.");
+      return;
+    }
+    console.log("Logging in with:", { email, password });
+    // simulate login logic here
+  };
+
+  return (
+    <div style={{ padding: "2rem" }}>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          style={{ display: "block", margin: "10px 0" }}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+          style={{ display: "block", margin: "10px 0" }}
+        />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+}
