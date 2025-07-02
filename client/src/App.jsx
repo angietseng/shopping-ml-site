@@ -37,6 +37,10 @@ function App() {
     setCart(prevCart => prevCart.filter(item => item._id !== productId));
   };
   const [user, setUser] = useState(null);
+  const handleLogout = () => {
+  localStorage.removeItem("user");
+  setUser(null);
+  };
 
   useEffect(() => {
     console.log("🛒 Cart updated:", cart);
