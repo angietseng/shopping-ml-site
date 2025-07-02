@@ -6,12 +6,16 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!email || !password) {
-      alert("Please fill in all fields.");
-      return;
+        alert("Please fill in all fields.");
+        return;
     }
-    console.log("Logging in with:", { email, password });
-    // simulate login logic here
+
+    const mockUser = { email }; // in real app you'd get this from a server
+
+    localStorage.setItem("user", JSON.stringify(mockUser)); // save to browser
+    window.location.href = "/"; // refresh or redirect after login
   };
 
   return (
