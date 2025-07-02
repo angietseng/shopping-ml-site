@@ -36,9 +36,12 @@ function App() {
   const handleRemoveFromCart = (productId) => {
     setCart(prevCart => prevCart.filter(item => item._id !== productId));
   };
+  const [user, setUser] = useState(null);
+  
   useEffect(() => {
     console.log("🛒 Cart updated:", cart);
   }, [cart]);
+
   return (
     <Router>
       <nav style={{ padding: "10px", backgroundColor: "#f0f0f0" }}>
