@@ -56,6 +56,10 @@ function App() {
   }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <Router>
       <nav style={{ padding: "10px", backgroundColor: "#f0f0f0" }}>
