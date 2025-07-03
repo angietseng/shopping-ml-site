@@ -1,8 +1,14 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const location = useLocation();
+  const redirected = location.state?.fromProtected;
+
+  {redirected && <p style={{ color: "red" }}>Please log in to access that page.</p>}
 
   const handleSubmit = (e) => {
     e.preventDefault();

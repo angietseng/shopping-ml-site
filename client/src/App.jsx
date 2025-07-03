@@ -89,7 +89,7 @@ function App() {
         <Route path="/cart" element={user ? <Cart cart={cart} onUpdateQuantity={handleUpdateQuantity} onRemoveItem={handleRemoveFromCart} /> : <Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/checkout" element={user ? <Checkout cart={cart} /> : <Navigate to="/login" replace />} />
+        <Route path="/checkout" element={user ? <Checkout cart={cart} /> : <Navigate to="/login" replace state={{ fromProtected: true }} /> } />
 
       </Routes>
     </Router>
