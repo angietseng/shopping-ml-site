@@ -4,6 +4,7 @@ import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Checkout from "./pages/Checkout";
 import './App.css'; 
 import { useState } from "react";
 import { useEffect } from "react";
@@ -87,6 +88,7 @@ function App() {
         <Route path="/cart" element={<Cart cart={cart} onUpdateQuantity={handleUpdateQuantity} onRemoveItem={handleRemoveFromCart} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/checkout" element={<Checkout cart={cart} />} />
       </Routes>
     </Router>
   );
