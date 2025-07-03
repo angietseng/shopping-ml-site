@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Cart({ cart, onUpdateQuantity, onRemoveItem }) {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -30,6 +31,9 @@ export default function Cart({ cart, onUpdateQuantity, onRemoveItem }) {
           </ul>
           <hr />
           <h3>Total: ${total.toFixed(2)}</h3>
+          <Link to="/checkout">
+            <button style={{ marginTop: "1rem" }}>Proceed to Checkout</button>
+          </Link>
         </div>
       )}
     </div>
