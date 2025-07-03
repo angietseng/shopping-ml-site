@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
@@ -85,10 +86,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop onAddToCart={handleAddToCart} />} />
-        <Route path="/cart" element={<Cart cart={cart} onUpdateQuantity={handleUpdateQuantity} onRemoveItem={handleRemoveFromCart} />} />
+        <Route path="/cart" element={user ? <Cart cart={cart} onUpdateQuantity={handleUpdateQuantity} onRemoveItem={handleRemoveFromCart} /> : <Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/checkout" element={<Checkout cart={cart} />} />
+        <Route path="/checkout" element={user ? <Checkout cart={cart} /> : <Navigate to="/login" replace />} />
+
       </Routes>
     </Router>
   );
