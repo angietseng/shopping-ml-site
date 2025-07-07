@@ -21,3 +21,6 @@ app.use("/api/products", productRoutes);
 app.listen(5050, () => {
   console.log("Server started on port 5050");
 });
+
+const interactionRoutes = require("./routes/interactionRoutes");
+app.use("/api/interactions", interactionRoutes);
