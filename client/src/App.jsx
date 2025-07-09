@@ -28,6 +28,19 @@ function App() {
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
+
+    // 🛠 Log interaction to backend
+    if (user) {
+      fetch("http://127.0.0.1:5050/api/interactions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: user._id,
+          productId: product._id,
+          action: "add_to_cart"
+        })
+      }).catch(err => console.error("Add to cart logging failed:", err));
+    }
   };
   const handleUpdateQuantity = (productId, delta) => {
     setCart(prevCart =>
