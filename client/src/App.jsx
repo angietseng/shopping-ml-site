@@ -85,7 +85,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop onAddToCart={handleAddToCart} />} />
+        <Route path="/shop" element={<Shop user={user} onAddToCart={handleAddToCart} />} />
         <Route path="/cart" element={user ? <Cart cart={cart} onUpdateQuantity={handleUpdateQuantity} onRemoveItem={handleRemoveFromCart} /> : <Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
