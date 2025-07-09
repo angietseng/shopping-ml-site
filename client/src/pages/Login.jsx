@@ -18,7 +18,10 @@ export default function Login() {
         return;
     }
 
-    const mockUser = { email }; // in real app you'd get this from a server
+    const mockUser = {
+      _id: "1234567890abcdef",  // <-- fake ObjectId string
+      email
+    };
 
     localStorage.setItem("user", JSON.stringify(mockUser)); // save to browser
     window.location.href = "/"; // refresh or redirect after login
