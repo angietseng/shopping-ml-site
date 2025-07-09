@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 
-export default function Shop({ onAddToCart }) {
+export default function Shop({ user, onAddToCart }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
