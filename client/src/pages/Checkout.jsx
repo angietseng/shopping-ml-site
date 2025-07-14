@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-export default function Checkout({ cart }) {
+export default function Checkout({ user, cart, setCart }) {
+  console.log("✅ user:", user);
+  console.log("🛒 cart:", cart);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -9,8 +12,28 @@ export default function Checkout({ cart }) {
 
   const handlePlaceOrder = (e) => {
     e.preventDefault();
-    console.log("Order placed:", { name, email, address, cart });
-    alert("✅ Order placed (mock)!");
+    console.log("🧾 Place Order button clicked");
+
+    if (!user) {
+      alert("You must be logged in to place an order.");
+      return;
+    }
+
+    cart.forEach(item => {
+      fetch("http://127.0.0.1:5050/api/interactions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: user._id,
+          productId: item._id,
+          action: "purchase"
+        })
+      }).catch(err => console.error("Purchase logging failed:", err));
+    });
+
+    alert("✅ Order placed!");
+    setCart([]); // optional: clear cart
+    localStorage.removeItem("cart"); // optional: clear from localStorage
   };
 
   return (
@@ -55,7 +78,7 @@ export default function Checkout({ cart }) {
           rows={4}
           style={{ display: "block", margin: "10px 0", width: "300px" }}
         />
-        <button type="submit">Place Order</button>
+        <button onClick={handlePlaceOrder}>Place Order</button>
       </form>
     </div>
   );
